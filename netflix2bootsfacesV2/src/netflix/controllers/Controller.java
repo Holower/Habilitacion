@@ -54,4 +54,12 @@ public Usuario getUser() {
 	 }
 	return null;
  }
+public String nuevaClave() {
+	return null;
+	
+}
+public String olvidarEmail() {
+	return null;
+	
+}
 }

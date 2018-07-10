@@ -7,7 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
-	<title>login</title>
+	<title>olvido</title>
 </h:head>
 <h:body>
 	<b:navBar brand="Menu" brandHref="#" inverse="true">
@@ -18,12 +18,9 @@
 	</b:navBar>
 	<h:form>
 		<h:panelGrid columns="2">
-			<h:outputLabel value="User"></h:outputLabel>
-			<h:inputText value="#{controller.user.usuario}"></h:inputText>
-			<h:outputLabel value="Password"></h:outputLabel>
-			<h:inputSecret value="#{controller.user.clave}"></h:inputSecret>
-			<h:commandButton value="Login" action="#{controller.login}"></h:commandButton>
-			<h:commandButton value="olvide la contraseña" action="#{controller.olvidarEmail}"></h:commandButton>
+			<h:outputLabel value="Digita correo del usuario"></h:outputLabel>
+			<h:inputText value="#{controller.user.email}"></h:inputText>
+			<h:commandButton value="Enviar Correo" action="#{controller.olvidarEmail}"></h:commandButton>
 		</h:panelGrid>
 	</h:form>
 </h:body>
