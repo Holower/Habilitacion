@@ -2,32 +2,45 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
 <h:head>
 	<title>ejemplo</title>
 </h:head>
+
 <h:body>
-	<b:navBar brand="Menu" brandHref="#" inverse="true">
+	<b:navBar brand="Menu" brandHref="index.xhtml" inverse="true">
 		<b:navbarLinks>
-			<b:navLink value="Peliculas" href="listapeliculas.xhtml"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
-	<ul>
-		<li><h:link value="bootlink" outcome="listapeliculas"></h:link></li>
-	</ul>
-	<h3>Lista de Peliculas</h3>
-	<h:dataTable value="#{controller.peliculas}" var="pelicula">
-		<h:column>
-			<f:facet name="header">Nombre</f:facet>#{pelicula.nombre}</h:column>
-	</h:dataTable>
-	<h3>Favoritos</h3>
-	<h:dataTable value="#{controller.biblioteca}" var="pelicula">
-		<h:column>
-			<f:facet name="header">Nombre</f:facet>#{pelicula.nombre}</h:column>
-	</h:dataTable>
-	
+	<b:container>
+		<b:dataTable value="#{controller.peliculas}" var="pelicula">
+			<b:dataTableColumn label="Nombre">
+				<h:outputText value="#{pelicula.nombre}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Año">
+				<h:outputText value="#{pelicula.ano}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Duracion">
+				<h:outputText value="#{pelicula.duracionmin}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Idioma">
+				<h:outputText value="#{pelicula.idioma}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Resumen">
+				<h:outputText value="#{pelicula.resumen}"></h:outputText>
+			</b:dataTableColumn>
+		</b:dataTable>
+	</b:container>
+	<b:container>
+		<b:dataTable value="#{controller.biblioteca}" var="pelicula">
+			<b:dataTableColumn>
+				<h:outputText value="#{pelicula.nombre}"></h:outputText>
+			</b:dataTableColumn>
+		</b:dataTable>
+	</b:container>
 </h:body>
 </html>
