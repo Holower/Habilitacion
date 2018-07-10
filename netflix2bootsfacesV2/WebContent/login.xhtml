@@ -2,28 +2,31 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:b="http://bootsfaces.net/ui">
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
 <h:head>
-	<title>login</title>
+	<title>loginjsf</title>
 </h:head>
 <h:body>
 	<b:navBar brand="Menu" brandHref="#" inverse="true">
 		<b:navbarLinks>
 			<b:navLink value="Inicio" href="login.xhtml"></b:navLink>
-			<b:navLink value="Sig-in" href="sig.in.xhtml"></b:navLink>
+			<b:navLink value="Link" href="#"></b:navLink>
+			<b:navLink value="Link" href="#"></b:navLink>
 		</b:navbarLinks>
 	</b:navBar>
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="User"></h:outputLabel>
-			<h:inputText value="#{controller.user.usuario}"></h:inputText>
-			<h:outputLabel value="Password"></h:outputLabel>
-			<h:inputSecret value="#{controller.user.clave}"></h:inputSecret>
-			<h:commandButton value="Login" action="#{controller.login}"></h:commandButton>
-		</h:panelGrid>
-	</h:form>
+	<b:form id="loginForm" inline="true">
+		<b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
+			value="#{controller.user.usuario}" label="Username" />
+		<b:message for="@previous" />
+		<b:inputSecret id="passwordDiv" fieldId="j_password" name="j_password"
+			value="#{controller.user.clave}" label="Password" />
+		<b:message for="passwordDiv" />
+		<b:commandButton update="@form" value="Login"
+			action="#{controller.login}" />
+	</b:form>
 </h:body>
 </html>
