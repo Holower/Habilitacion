@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>ejemplo</title>
+</h:head>
+
+<h:body>
+	<b:navBar brand="Menu" brandHref="index.xhtml" inverse="true">
+		<b:navbarLinks>
+		</b:navbarLinks>
+	</b:navBar>
+	<b:container>
+		<b:dataTable value="#{controller.peliculas}" var="pelicula">
+			<b:dataTableColumn label="Nombre">
+				<h:outputText value="#{pelicula.nombre}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Año">
+				<h:outputText value="#{pelicula.ano}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Duracion">
+				<h:outputText value="#{pelicula.duracionmin}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Idioma">
+				<h:outputText value="#{pelicula.idioma}"></h:outputText>
+			</b:dataTableColumn>
+			<b:dataTableColumn label="Resumen">
+				<h:outputText value="#{pelicula.resumen}"></h:outputText>
+			</b:dataTableColumn>
+		</b:dataTable>
+	</b:container>
+	<b:container>
+		<b:dataTable value="#{controller.biblioteca}" var="pelicula">
+			<b:dataTableColumn>
+				<h:outputText value="#{pelicula.nombre}"></h:outputText>
+			</b:dataTableColumn>
+		</b:dataTable>
+	</b:container>
+	
+	<b:form>
+		<b:selectOneMenu value="#{pelicula.nombre}"
+			tooltip="Ain't it a nice tooltip?" />
+	</b:form>
+</h:body>
+</html>
