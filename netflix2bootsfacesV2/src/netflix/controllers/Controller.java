@@ -1,6 +1,7 @@
 package netflix.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import netflix.entities.*;
 @SessionScoped
 public class Controller {
  private Usuario user;
+ private Pelicula peli;
  
 
 public Usuario getUser() {
@@ -21,6 +23,13 @@ public Usuario getUser() {
 	}
 	return user;
 }
+
+public Pelicula getPeli() {
+	if(peli==null) {
+		peli=new Pelicula();
+	}
+	return peli;
+}
  public String login() {
 	 System.out.println("Hola si me llamas");
 	 Usuario temp=new UsuarioDao().find(this.user.getUsuario());
@@ -28,6 +37,21 @@ public Usuario getUser() {
 		 return "user";
 	 }
 	 return "login";
+ }
+ 
+ public String findPelicula() {
+	 Pelicula temp=new PeliculaDao().find(this.peli.getId());
+	 Usuario temp2=new UsuarioDao().find(this.user.getUsuario());
+	 Usuariopelicula c = new Usuariopelicula();
+	 if(this.getBiblioteca()==null) {
+		 c.setUsuarioBean(temp2);
+		 c.setPeliculaBean(temp);
+		 c.setFecha(new Date());
+		 c.setId(3);
+		 new UsuarioPeliculaDao().insert(c);
+		 return "user";
+	 }
+	return null;
  }
  public List<Pelicula> getPeliculas(){
 	return new PeliculaDao().list();
@@ -40,6 +64,11 @@ public Usuario getUser() {
 	 }
 	 return id;
 	 }
+ 
+ public String addPeliculaUsuario() {
+	return "user";
+	 
+ }
  
  public String sigin() {
 	 Usuario temp=new UsuarioDao().find(this.user.getUsuario());

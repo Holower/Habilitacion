@@ -11,13 +11,14 @@
 </h:head>
 <b:form horizontal="true">
   <b:formGroup>
-    <b:selectOneMenu value="#{controller.peliculas}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
+    <b:selectOneMenu value="#{controller.peli.id}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
       <f:selectItem itemLabel="(Please select)" itemValue="" />
       <f:selectItems value="#{controller.ids}"></f:selectItems>
     </b:selectOneMenu>
     <b:message colMd="2" />
-    <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
+    <b:inputText value="#{controller.peli.id}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
   </b:formGroup>
-  <b:commandButton value="Submit AJAX" update="brandOutputID2" />
+   <b:commandButton value="Cargar Pelicula" process="@form" update="@form" />
+  <b:commandButton value="Añadir pelicula" action="#{controller.findPelicula}" />
 </b:form>
 </html>
