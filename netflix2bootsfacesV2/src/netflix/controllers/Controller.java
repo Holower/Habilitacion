@@ -1,6 +1,7 @@
 package netflix.controllers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -31,6 +32,14 @@ public Usuario getUser() {
  public List<Pelicula> getPeliculas(){
 	return new PeliculaDao().list();
  }
+ public List<Integer> getIds(){
+	 List<Integer> id=new ArrayList<Integer>(); 
+	 Iterator<Pelicula> it = new PeliculaDao().list().iterator(); 
+	 while (it.hasNext()) {  
+	 id.add(it.next().getId());  
+	 }
+	 return id;
+	 }
  
  public String sigin() {
 	 Usuario temp=new UsuarioDao().find(this.user.getUsuario());

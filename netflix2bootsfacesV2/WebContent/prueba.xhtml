@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>ejemplo</title>
+</h:head>
+<b:form horizontal="true">
+  <b:formGroup>
+    <b:selectOneMenu value="#{controller.peliculas}" colMd="2" required="true" label="Select your car's brand:" labelColMd="2">
+      <f:selectItem itemLabel="(Please select)" itemValue="" />
+      <f:selectItems value="#{controller.ids}"></f:selectItems>
+    </b:selectOneMenu>
+    <b:message colMd="2" />
+    <b:inputText value="#{selectOneMenuBean.brand}" disabled="true" colMd="4" label="Last submitted value:" labelColMd="2" id="brandOutputID2" />
+  </b:formGroup>
+  <b:commandButton value="Submit AJAX" update="brandOutputID2" />
+</b:form>
+</html>
